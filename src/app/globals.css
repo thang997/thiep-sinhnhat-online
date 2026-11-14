@@ -81,6 +81,18 @@ body {
   box-shadow: 0 0 0 3px color-mix(in oklab, var(--caramel) 20%, transparent);
 }
 
+/* Lời chúc bay lên rồi mờ dần (8s — khớp LIFE_MS trong FloatingWishes) */
+@keyframes wish-float {
+  0% { opacity: 0; transform: translateY(24px) scale(0.92); }
+  8% { opacity: 1; transform: translateY(0) scale(1); }
+  75% { opacity: 0.95; }
+  100% { opacity: 0; transform: translateY(-240px); }
+}
+
+.wish-float {
+  animation: wish-float 8s cubic-bezier(0.25, 0.6, 0.4, 1) forwards;
+}
+
 /* ---------- Phong bì (màn mở đầu) ---------- */
 .envelope {
   position: relative;

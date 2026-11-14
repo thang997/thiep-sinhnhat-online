@@ -6,6 +6,7 @@ import { BABY, HERO_PHOTO, INVITE, PARTY, PHOTOS } from "@/lib/content";
 import { calendarUrl, formatParty, mapsUrl } from "@/lib/party";
 import Album from "./Album";
 import Countdown from "./Countdown";
+import FloatingWishes from "./FloatingWishes";
 import MonthCalendar from "./MonthCalendar";
 import Reveal from "./Reveal";
 import Rsvp from "./Rsvp";
@@ -39,6 +40,7 @@ export default function Invitation() {
 
   return (
     <main className="screen-enter paper-dots min-h-dvh">
+      <FloatingWishes />
       {/* ---------- Hero ---------- */}
       <section className="relative flex min-h-dvh flex-col items-center justify-center overflow-hidden px-6 pt-10 pb-16 text-center">
         <div className="pointer-events-none absolute inset-0" aria-hidden>

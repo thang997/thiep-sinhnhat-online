@@ -1,25 +1,18 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { BABY } from "@/lib/content";
-import { fetchWishes, guestbookReady, LIMITS, sendWish, timeAgo, type Wish } from "@/lib/guestbook";
+import { LIMITS, sendWish, timeAgo } from "@/lib/guestbook";
+import { addWish, useWishes } from "@/lib/useWishes";
 
 /** Form gửi lời chúc + danh sách lời chúc (mới nhất ở trên). Gửi xong hiện ngay, không chờ tải lại. */
 export default function Wishes() {
-  const [wishes, setWishes] = useState<Wish[]>([]);
-  const [loading, setLoading] = useState(guestbookReady);
+  const { wishes, loading } = useWishes();
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
   const [website, setWebsite] = useState(""); // bẫy bot
   const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">("idle");
   const [error, setError] = useState("");
-
-  useEffect(() => {
-    fetchWishes()
-      .then(setWishes)
-      .catch(() => {})
-      .finally(() => setLoading(false));
-  }, []);
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -30,7 +23,7 @@ export default function Wishes() {
     setError("");
     try {
       await sendWish({ name: n, message: m, website });
-      setWishes((w) => [{ name: n, message: m, time: new Date().toISOString() }, ...w]);
+      addWish({ name: n, message: m, time: new Date().toISOString() });
       setMessage("");
       setStatus("done");
     } catch (err) {
