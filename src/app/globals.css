@@ -35,6 +35,18 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 
+/* Tailwind 4 bỏ cursor: pointer mặc định của button — bật lại cho mọi nút/link bấm được */
+button:not(:disabled),
+[role="button"],
+a[href],
+label:has(input) {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
 /* Nền giấy có chấm bi mờ */
 .paper-dots {
   background-color: var(--cream);
