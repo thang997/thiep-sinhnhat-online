@@ -191,9 +191,11 @@ body {
   transition: opacity 0.7s ease, transform 0.7s ease;
 }
 
+/* Chỉ dùng opacity: transform trên <main> sẽ biến main thành khung chứa của các phần tử fixed
+   (lời chúc bay, nút 💬, xem ảnh lớn) → chúng bị đẩy xuống cuối trang thay vì bám màn hình. */
 @keyframes enter {
-  from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: none; }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .screen-enter {

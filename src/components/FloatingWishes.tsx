@@ -10,7 +10,7 @@ const LIFE_MS = 8000; // mỗi bong bóng sống bao lâu (khớp animation .wis
 type Bubble = { id: number; wish: Wish };
 
 /**
- * Lời chúc bay lên ở góc dưới bên trái, mờ dần — kiểu bình luận livestream.
+ * Lời chúc bay lên sát mép trái khung thiệp, luôn ở gần đáy màn hình, mờ dần — kiểu bình luận livestream.
  * Chạy vòng lặp hết danh sách; lời chúc vừa gửi bay ra ngay. Không chặn chạm/cuộn trang.
  */
 export default function FloatingWishes() {
@@ -53,7 +53,7 @@ export default function FloatingWishes() {
 
   return (
     <>
-      <div className="pointer-events-none fixed bottom-20 left-3 z-30 h-72 w-[min(72vw,300px)]" aria-hidden>
+      <div className="pointer-events-none fixed bottom-20 left-[max(1rem,calc(50%-13rem))] z-30 h-72 w-[min(72vw,300px)]" aria-hidden>
         {on &&
           bubbles.map((b) => (
             <div
@@ -72,7 +72,7 @@ export default function FloatingWishes() {
           setBubbles([]);
         }}
         aria-label={on ? "Tắt lời chúc bay" : "Bật lời chúc bay"}
-        className={`fixed bottom-4 left-4 z-40 grid size-12 place-items-center rounded-full shadow-lg ring-4 ring-paper/70 transition-colors ${
+        className={`fixed bottom-4 left-[max(1rem,calc(50%-13rem))] z-40 grid size-12 place-items-center rounded-full shadow-lg ring-4 ring-paper/70 transition-colors ${
           on ? "bg-cocoa text-paper" : "bg-paper text-cocoa/60"
         }`}
       >
