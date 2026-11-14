@@ -1,0 +1,192 @@
+@import "tailwindcss";
+
+/* Bảng màu lấy theo bộ ảnh studio: kem — be — nâu caramel — xám xanh (mũ của bé) */
+:root {
+  --cream: #f6efe6;
+  --paper: #fffaf3;
+  --sand: #e8d9c4;
+  --caramel: #b98a5e;
+  --cocoa: #6b4f3a;
+  --ink: #3d2f25;
+  --mist: #9fadba;
+}
+
+@theme inline {
+  --color-cream: var(--cream);
+  --color-paper: var(--paper);
+  --color-sand: var(--sand);
+  --color-caramel: var(--caramel);
+  --color-cocoa: var(--cocoa);
+  --color-ink: var(--ink);
+  --color-mist: var(--mist);
+  --font-sans: var(--font-nunito), system-ui, sans-serif;
+  --font-display: var(--font-baloo), var(--font-nunito), sans-serif;
+  --font-script: var(--font-dancing), cursive;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Nền giấy có chấm bi mờ */
+.paper-dots {
+  background-color: var(--cream);
+  background-image: radial-gradient(color-mix(in oklab, var(--caramel) 18%, transparent) 1.2px, transparent 1.3px);
+  background-size: 22px 22px;
+}
+
+/* ---------- Phong bì (màn mở đầu) ---------- */
+.envelope {
+  position: relative;
+  width: min(80vw, 340px);
+  aspect-ratio: 4 / 3;
+  perspective: 1200px;
+}
+
+.env-back,
+.env-front,
+.env-flap {
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+}
+
+.env-back {
+  background: #d9c3a5;
+  box-shadow: 0 24px 50px -18px rgb(107 79 58 / 0.45);
+}
+
+.env-card {
+  position: absolute;
+  left: 7%;
+  right: 7%;
+  bottom: 6%;
+  height: 92%;
+  z-index: 2;
+  border-radius: 10px;
+  background: var(--paper);
+  padding: 8px;
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.45s;
+}
+
+.env-front {
+  z-index: 3;
+  background: linear-gradient(160deg, #ecdcc6, #e2cdb1);
+  clip-path: polygon(0 0, 50% 56%, 100% 0, 100% 100%, 0 100%);
+}
+
+.env-flap {
+  z-index: 4;
+  background: linear-gradient(180deg, #e9d6bb, #dcc4a3);
+  clip-path: polygon(0 0, 100% 0, 50% 60%);
+  transform-origin: top center;
+  transition:
+    transform 0.6s cubic-bezier(0.55, 0, 0.3, 1),
+    z-index 0s linear 0.3s;
+}
+
+.env-seal {
+  position: absolute;
+  z-index: 5;
+  left: 50%;
+  top: 60%;
+  translate: -50% -50%;
+  transition: opacity 0.25s ease;
+}
+
+.envelope.is-open .env-flap {
+  transform: rotateX(180deg);
+  z-index: 1;
+}
+
+.envelope.is-open .env-seal {
+  opacity: 0;
+}
+
+.envelope.is-open .env-card {
+  transform: translateY(-58%);
+}
+
+/* Nhịp nhẹ mời chạm */
+@keyframes nudge {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-6px) rotate(-1deg); }
+}
+
+.nudge {
+  animation: nudge 2.4s ease-in-out infinite;
+}
+
+/* Đĩa nhạc quay */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.spin-slow {
+  animation: spin 4s linear infinite;
+}
+
+/* ---------- Chuyển màn ---------- */
+.screen-exit {
+  opacity: 0;
+  transform: scale(1.06);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+@keyframes enter {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: none; }
+}
+
+.screen-enter {
+  animation: enter 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ---------- Scroll reveal ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes bounce-down {
+  0%, 100% { transform: translateY(0); opacity: 0.5; }
+  50% { transform: translateY(6px); opacity: 1; }
+}
+
+.scroll-hint {
+  animation: bounce-down 1.8s ease-in-out infinite;
+}
+
+/* Tôn trọng thiết lập giảm chuyển động của hệ điều hành */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  .nudge,
+  .spin-slow,
+  .scroll-hint,
+  .screen-enter {
+    animation: none;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
