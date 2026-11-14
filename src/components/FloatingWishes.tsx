@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import type { Wish } from "@/lib/guestbook";
+import { timeAgo, type Wish } from "@/lib/guestbook";
 import { useWishes } from "@/lib/useWishes";
 
 const EVERY_MS = 3000; // bao lâu bay ra một lời chúc
@@ -60,7 +60,10 @@ export default function FloatingWishes() {
               key={b.id}
               className="wish-float absolute bottom-0 left-0 max-w-full rounded-2xl rounded-bl-sm bg-paper/75 px-3.5 py-2 shadow-md ring-1 ring-sand/80 backdrop-blur-sm"
             >
-              <p className="truncate text-xs font-bold text-cocoa">⭐ {b.wish.name}</p>
+              <p className="flex items-baseline gap-1.5 text-xs">
+                <span className="truncate font-bold text-cocoa">⭐ {b.wish.name}</span>
+                <span className="shrink-0 text-[11px] text-ink/45">· {timeAgo(b.wish.time)}</span>
+              </p>
               <p className="line-clamp-2 text-[13px] leading-snug text-ink/80">{b.wish.message}</p>
             </div>
           ))}

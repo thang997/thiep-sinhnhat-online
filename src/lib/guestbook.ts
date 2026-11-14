@@ -36,3 +36,11 @@ export const sendWish = (w: { name: string; message: string; website: string }) 
 
 export const sendRsvp = (r: RsvpInput & { website: string }) => post({ type: "rsvp", ...r });
 
+/** "vừa xong", "5 phút trước", "2 giờ trước", "3 ngày trước". */
+export function timeAgo(iso: string, now = Date.now()) {
+  const s = Math.max(0, (now - new Date(iso).getTime()) / 1000);
+  if (s < 60) return "vừa xong";
+  if (s < 3600) return `${Math.floor(s / 60)} phút trước`;
+  if (s < 86400) return `${Math.floor(s / 3600)} giờ trước`;
+  return `${Math.floor(s / 86400)} ngày trước`;
+}
