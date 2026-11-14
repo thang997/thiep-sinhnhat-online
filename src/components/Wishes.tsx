@@ -2,12 +2,11 @@
 
 import { useState } from "react";
 import { BABY } from "@/lib/content";
-import { LIMITS, sendWish, timeAgo } from "@/lib/guestbook";
-import { addWish, useWishes } from "@/lib/useWishes";
+import { LIMITS, sendWish } from "@/lib/guestbook";
+import { addWish } from "@/lib/useWishes";
 
-/** Form gửi lời chúc + danh sách lời chúc (mới nhất ở trên). Gửi xong hiện ngay, không chờ tải lại. */
+/** Form gửi lời chúc. Lời chúc hiển thị dạng bong bóng bay (FloatingWishes); gửi xong bay ra ngay. */
 export default function Wishes() {
-  const { wishes, loading } = useWishes();
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
   const [website, setWebsite] = useState(""); // bẫy bot
@@ -76,22 +75,6 @@ export default function Wishes() {
         {status === "done" && <p className="text-center text-sm text-cocoa">Cảm ơn lời chúc của bạn! 💛</p>}
         {status === "error" && <p className="text-center text-sm text-red-700">{error}</p>}
       </form>
-
-      <div className="mt-6 max-h-96 space-y-3 overflow-y-auto pr-1">
-        {loading && <p className="text-center text-sm text-ink/50">Đang tải lời chúc...</p>}
-        {!loading && wishes.length === 0 && (
-          <p className="text-center text-sm text-ink/50">Hãy là người đầu tiên gửi lời chúc đến bé nhé ✨</p>
-        )}
-        {wishes.map((w, i) => (
-          <div key={`${w.time}-${i}`} className="rounded-2xl bg-cream px-4 py-3 ring-1 ring-sand">
-            <div className="flex items-baseline justify-between gap-2">
-              <span className="font-semibold text-cocoa">⭐ {w.name}</span>
-              <span className="shrink-0 text-xs text-ink/40">{timeAgo(w.time)}</span>
-            </div>
-            <p className="mt-1 text-sm leading-relaxed break-words whitespace-pre-line text-ink/80">{w.message}</p>
-          </div>
-        ))}
-      </div>
     </div>
   );
 }
