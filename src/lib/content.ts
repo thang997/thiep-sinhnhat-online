@@ -38,6 +38,7 @@ export type Photo = { src: string; alt: string; w: number; h: number };
 const P = 1067; // cạnh ngắn
 const L = 1600; // cạnh dài
 const portrait = (n: string, alt: string): Photo => ({ src: `/images/be-${n}.jpg`, alt, w: P, h: L });
+const photo = (n: string, alt: string, w: number, h: number): Photo => ({ src: `/images/be-${n}.jpg`, alt, w, h });
 const landscape = (n: string, alt: string): Photo => ({ src: `/images/be-${n}.jpg`, alt, w: L, h: P });
 
 /** Ảnh ở màn mở đầu và ảnh chính (hero). */
@@ -53,9 +54,12 @@ export const PHOTOS: Photo[] = [
   portrait("05", "Bé chỉ tay"),
   portrait("08", "Bé ngồi ghế gỗ"),
   landscape("11", "Bé chơi với thú bông"),
+  photo("18", "Bé ngồi sofa giữa đàn gấu bông", 1066, 1600),
   portrait("03", "Bé ngồi bên bóng bay"),
   portrait("07", "Bé ôm gấu"),
   landscape("13", "Bé đọc sách trên sofa"),
+  photo("16", "Bé ngồi ghế gỗ cao", 949, 1600),
+  photo("17", "Bé ngồi ghế gỗ cao mỉm cười", 1001, 1600),
   landscape("15", "Bé bò trên sàn"),
   portrait("06", "Bé vẫy tay chào"),
   portrait("14", "Bé đọc sách"),
