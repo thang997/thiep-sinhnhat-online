@@ -167,7 +167,7 @@ export default function Invitation() {
 
         {/* ---------- Lời chúc ---------- */}
         <Reveal as="section">
-          <SectionTitle kicker="Gửi yêu thương" title="Lời chúc từ khách mời" />
+          <SectionTitle kicker="Gửi yêu thương" title={`Lời chúc đến bé ${BABY.nickname}`} />
           <Wishes />
         </Reveal>
 
