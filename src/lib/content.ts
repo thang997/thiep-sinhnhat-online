@@ -29,7 +29,7 @@ export const INVITE = {
   title: "Sinh nhật",
   greeting: "Trân trọng kính mời",
   message:
-    "Một năm trôi qua thật nhanh, con đã lớn lên trong tình yêu thương của cả nhà. Bố mẹ con rất mong được đón tiếp mọi người đến chung vui ngày con tròn 1 tuổi.",
+    "Một năm trôi qua thật nhanh, con đã lớn lên trong tình yêu thương của cả gia đình. Bố mẹ con rất mong được đón tiếp mọi người đến chung vui ngày con tròn 1 tuổi.",
   signature: "Bố mẹ bé Tôm", // TODO
 };
 
