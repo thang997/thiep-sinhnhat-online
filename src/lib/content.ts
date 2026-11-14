@@ -20,7 +20,7 @@ export const PARTY = {
   venueName: "Nhà hàng Phú Cường",
   address: "340 Bà Triệu, Hai Bà Trưng, Hà Nội",
   /** Gần ngã tư Bà Triệu — Đại Cồ Việt. Hiện nhỏ dưới địa chỉ (để "" nếu không cần). */
-  landmark: "Gần đường Đại Cồ Việt",
+  landmark: "",
   /** Link Google Maps chính xác (nếu có). Để "" thì tự tìm theo địa chỉ. */
   mapsUrl: "",
 };
