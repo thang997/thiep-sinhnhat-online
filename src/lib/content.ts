@@ -61,6 +61,12 @@ export const PHOTOS: Photo[] = [
   portrait("14", "Bé đọc sách"),
 ];
 
+/**
+ * Link Web App của Google Apps Script (dạng https://script.google.com/macros/s/.../exec).
+ * Cách tạo: xem README → "Lời chúc & xác nhận tham dự". Để "" thì form vẫn hiện nhưng báo chưa kết nối.
+ */
+export const GUESTBOOK_API = ""; // TODO: dán link Apps Script
+
 export const MUSIC = {
   /** Đặt file mp3 vào public/music/ với đúng tên này. Thiếu file thì thiệp vẫn chạy, chỉ không có nhạc. */
   src: "/music/nang-ngoai-san.mp3",

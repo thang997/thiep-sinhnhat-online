@@ -8,6 +8,8 @@ import Album from "./Album";
 import Countdown from "./Countdown";
 import MonthCalendar from "./MonthCalendar";
 import Reveal from "./Reveal";
+import Rsvp from "./Rsvp";
+import Wishes from "./Wishes";
 
 // Three.js chỉ chạy phía client — tải sau để màn nội dung hiện ngay.
 const Balloons = dynamic(() => import("./three/Balloons"), { ssr: false });
@@ -17,6 +19,17 @@ function SectionTitle({ kicker, title }: { kicker: string; title: string }) {
     <div className="mb-6 text-center">
       <p className="font-script text-2xl text-caramel">{kicker}</p>
       <h2 className="font-display text-3xl font-bold text-cocoa">{title}</h2>
+    </div>
+  );
+}
+
+/** Hoa văn ngăn cách các mục trong khung. */
+function Divider() {
+  return (
+    <div className="flex items-center justify-center gap-3 text-caramel/60" aria-hidden>
+      <span className="h-px w-16 bg-caramel/30" />
+      <span className="text-sm">✦</span>
+      <span className="h-px w-16 bg-caramel/30" />
     </div>
   );
 }
@@ -59,12 +72,17 @@ export default function Invitation() {
         </div>
       </section>
 
-      <div className="mx-auto flex max-w-md flex-col gap-20 px-5 pb-28">
+      {/* Khung "tờ thiệp": toàn bộ nội dung từ lời mời trở xuống nằm trong một tấm giấy viền đôi */}
+      <div className="px-3 pb-24">
+        <div className="frame mx-auto max-w-md">
+          <div className="flex flex-col gap-14 px-5 py-12">
         {/* ---------- Lời mời ---------- */}
         <Reveal as="section" className="text-center">
           <SectionTitle kicker={INVITE.greeting} title="Bạn đến chung vui" />
           <p className="leading-relaxed text-ink/80">{INVITE.message}</p>
         </Reveal>
+
+        <Divider />
 
         {/* ---------- Thời gian ---------- */}
         <Reveal as="section" className="text-center">
@@ -91,6 +109,8 @@ export default function Invitation() {
           </a>
         </Reveal>
 
+        <Divider />
+
         {/* ---------- Địa điểm ---------- */}
         <Reveal as="section" className="text-center">
           <SectionTitle kicker="Địa điểm" title={PARTY.venueName} />
@@ -105,6 +125,8 @@ export default function Invitation() {
           </a>
         </Reveal>
 
+        <Divider />
+
         {/* ---------- Album ---------- */}
         <section>
           <Reveal>
@@ -113,11 +135,31 @@ export default function Invitation() {
           <Album photos={PHOTOS} />
         </section>
 
+        <Divider />
+
+        {/* ---------- Lời chúc ---------- */}
+        <Reveal as="section">
+          <SectionTitle kicker="Gửi yêu thương" title="Lời chúc từ khách mời" />
+          <Wishes />
+        </Reveal>
+
+        <Divider />
+
+        {/* ---------- Xác nhận tham dự ---------- */}
+        <Reveal as="section">
+          <SectionTitle kicker="Hồi âm" title="Xác nhận tham dự" />
+          <Rsvp />
+        </Reveal>
+
+        <Divider />
+
         {/* ---------- Lời kết ---------- */}
         <Reveal as="section" className="text-center">
           <p className="font-display text-2xl font-semibold text-cocoa">Rất hân hạnh được đón tiếp!</p>
           <p className="mt-4 font-script text-3xl text-caramel">{INVITE.signature}</p>
         </Reveal>
+          </div>
+        </div>
       </div>
     </main>
   );
