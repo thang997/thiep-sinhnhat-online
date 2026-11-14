@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { BABY, INTRO_PHOTO, INVITE } from "@/lib/content";
+import { BABY, INTRO_PHOTO } from "@/lib/content";
 import { useGuestName } from "@/lib/guest";
 
 type Props = {
