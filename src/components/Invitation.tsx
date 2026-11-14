@@ -6,6 +6,7 @@ import { BABY, HERO_PHOTO, INVITE, PARTY, PHOTOS } from "@/lib/content";
 import { calendarUrl, formatParty, mapsUrl } from "@/lib/party";
 import Album from "./Album";
 import Countdown from "./Countdown";
+import MonthCalendar from "./MonthCalendar";
 import Reveal from "./Reveal";
 
 // Three.js chỉ chạy phía client — tải sau để màn nội dung hiện ngay.
@@ -74,6 +75,9 @@ export default function Invitation() {
             <span className="text-sm uppercase tracking-widest text-ink/60">Năm {d.year}</span>
           </div>
           {PARTY.lunar && <p className="mt-3 text-sm text-ink/60 italic">({PARTY.lunar})</p>}
+          <div className="mt-6">
+            <MonthCalendar />
+          </div>
           <div className="mt-6">
             <Countdown />
           </div>

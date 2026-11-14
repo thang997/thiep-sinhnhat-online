@@ -40,18 +40,24 @@ const landscape = (n: string, alt: string): Photo => ({ src: `/images/be-${n}.jp
 
 /** Ảnh ở màn mở đầu và ảnh chính (hero). */
 export const INTRO_PHOTO = portrait("03", "Bé ngồi bên bóng bay");
-export const HERO_PHOTO = portrait("06", "Bé vẫy tay chào");
+export const HERO_PHOTO = portrait("07", "Bé cười ôm gấu bông");
 
 /** Album — thứ tự hiển thị. */
 export const PHOTOS: Photo[] = [
   portrait("01", "Bé bên bóng bay"),
-  landscape("12", "Bé cười trên sofa"),
-  portrait("08", "Bé ngồi ghế gỗ"),
+  landscape("04", "Bé ngồi giơ tay"),
   portrait("02", "Bé và gấu bông"),
+  landscape("12", "Bé cười trên sofa"),
+  portrait("05", "Bé chỉ tay"),
+  portrait("08", "Bé ngồi ghế gỗ"),
   landscape("11", "Bé chơi với thú bông"),
+  portrait("03", "Bé ngồi bên bóng bay"),
   portrait("07", "Bé ôm gấu"),
-  portrait("10", "Bé trên ghế cao"),
+  landscape("13", "Bé đọc sách trên sofa"),
+  portrait("09", "Bé trên ghế cao"),
+  portrait("10", "Bé ngồi ghế cao nhìn quanh"),
   landscape("15", "Bé bò trên sàn"),
+  portrait("06", "Bé vẫy tay chào"),
   portrait("14", "Bé đọc sách"),
 ];
 
