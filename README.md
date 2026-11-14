@@ -1,4 +1,4 @@
-# Thiệp mời thôi nôi bé Tom 🎂
+# Thiệp mời sinh nhật bé Tom 🎂
 
 Thiệp mời online: màn mở phong bì → nội dung (thông tin tiệc, đếm ngược, chỉ đường, album ảnh).
 Next.js 16 · React 19 · Tailwind 4 · React Three Fiber.
@@ -30,7 +30,7 @@ và điền sẵn tên vào form lời chúc / xác nhận. Nút "Chép" chép l
 
 Không dùng DB — dữ liệu ghi vào Google Sheet của bạn qua Apps Script.
 
-1. Tạo Google Sheet mới (tên tuỳ ý, vd "Thiệp thôi nôi Tom").
+1. Tạo Google Sheet mới (tên tuỳ ý, vd "Thiệp sinh nhật Tom").
 2. Menu **Extensions (Tiện ích mở rộng) → Apps Script**. Xoá code mẫu, dán toàn bộ [`apps-script/Code.gs`](apps-script/Code.gs), bấm 💾 Lưu.
 3. **Deploy (Triển khai) → New deployment (Tùy chọn triển khai mới)** → bánh răng ⚙ chọn **Web app**:
    - Execute as: **Me**

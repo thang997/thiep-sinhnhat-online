@@ -7,7 +7,7 @@ const nunito = Nunito({ subsets: ["latin", "vietnamese"], variable: "--font-nuni
 const baloo = Baloo_2({ subsets: ["latin", "vietnamese"], variable: "--font-baloo" });
 const dancing = Dancing_Script({ subsets: ["latin", "vietnamese"], variable: "--font-dancing" });
 
-const title = `Mời dự tiệc thôi nôi bé ${BABY.nickname} 🎂`;
+const title = `Mời dự tiệc sinh nhật bé ${BABY.nickname} 🎂`;
 const description = `Bé ${BABY.nickname} tròn 1 tuổi! Gia đình trân trọng kính mời bạn đến chung vui.`;
 
 export const metadata: Metadata = {

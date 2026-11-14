@@ -26,7 +26,7 @@ export const PARTY = {
 };
 
 export const INVITE = {
-  title: "Thôi nôi",
+  title: "Sinh nhật",
   greeting: "Trân trọng kính mời",
   message:
     "Một năm trôi qua thật nhanh, con đã lớn lên trong tình yêu thương của cả nhà. Bố mẹ rất mong được đón tiếp mọi người đến chung vui ngày con tròn 1 tuổi.",

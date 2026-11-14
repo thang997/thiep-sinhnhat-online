@@ -1,5 +1,5 @@
 /**
- * Google Apps Script — lưu lời chúc & xác nhận tham dự cho thiệp thôi nôi.
+ * Google Apps Script — lưu lời chúc & xác nhận tham dự cho thiệp sinh nhật.
  * Dán toàn bộ file này vào Extensions → Apps Script của Google Sheet, rồi Deploy → Web app
  * (Execute as: Me, Who has access: Anyone). Xem README để biết từng bước.
  *

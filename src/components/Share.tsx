@@ -33,7 +33,7 @@ export default function Share() {
 
   const share = async () => {
     const url = publicUrl();
-    const data = { title: `Thôi nôi bé ${BABY.nickname}`, text: `Mời bạn dự tiệc thôi nôi bé ${BABY.nickname} 🎂`, url };
+    const data = { title: `Sinh nhật bé ${BABY.nickname}`, text: `Mời bạn dự tiệc sinh nhật bé ${BABY.nickname} 🎂`, url };
     if (navigator.share) {
       try {
         await navigator.share(data);
@@ -77,7 +77,7 @@ export default function Share() {
         >
           <div className="frame w-full max-w-xs p-6 text-center" onClick={(e) => e.stopPropagation()}>
             <p className="font-script text-2xl text-caramel">Quét để mở thiệp</p>
-            <p className="font-display text-xl font-bold text-cocoa">Thôi nôi bé {BABY.nickname}</p>
+            <p className="font-display text-xl font-bold text-cocoa">Sinh nhật bé {BABY.nickname}</p>
             <div className="mx-auto mt-4 aspect-square w-full max-w-60 overflow-hidden rounded-2xl bg-paper">
               {qr ? (
                 // eslint-disable-next-line @next/next/no-img-element

@@ -41,7 +41,7 @@ export default function TaoLink() {
   };
 
   const message = (l: { name: string; url: string }) =>
-    `Kính mời ${l.name} đến dự tiệc thôi nôi bé ${BABY.nickname} 🎂\n${l.url}`;
+    `Kính mời ${l.name} đến dự tiệc sinh nhật bé ${BABY.nickname} 🎂\n${l.url}`;
 
   return (
     <main className="paper-dots min-h-dvh px-4 py-10">

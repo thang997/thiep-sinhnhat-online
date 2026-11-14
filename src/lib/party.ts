@@ -48,7 +48,7 @@ export function calendarUrl() {
   };
   const q = new URLSearchParams({
     action: "TEMPLATE",
-    text: `Tiệc thôi nôi bé ${BABY.nickname}`,
+    text: `Tiệc sinh nhật bé ${BABY.nickname}`,
     dates: `${fmt(PARTY.start)}/${fmt(PARTY.end)}`,
     ctz: "Asia/Ho_Chi_Minh",
     location: `${PARTY.venueName}, ${PARTY.address}`,
