@@ -53,16 +53,23 @@ export default function FloatingWishes() {
 
   return (
     <>
-      <div className="pointer-events-none fixed bottom-20 left-[max(1rem,calc(50%-13rem))] z-30 h-72 w-[min(72vw,300px)]" aria-hidden>
+      {/*
+        Màn rộng (≥1100px): cột lời chúc nằm NGOÀI khung thiệp, sát mép trái khung (khung rộng 28rem, giữa màn).
+        Điện thoại: không có chỗ ngoài khung → bong bóng nhỏ, trong hơn, chỉ bay thấp ở đáy màn hình.
+      */}
+      <div
+        className="wish-lane pointer-events-none fixed bottom-20 left-3 z-30 h-44 w-[min(64vw,250px)] min-[1100px]:left-auto min-[1100px]:right-[calc(50%+15rem)] min-[1100px]:h-[60vh] min-[1100px]:w-[260px]"
+        aria-hidden
+      >
         {on &&
           bubbles.map((b) => (
             <div
               key={b.id}
-              className="wish-float absolute bottom-0 left-0 max-w-full rounded-2xl rounded-bl-sm bg-paper/75 px-3.5 py-2 shadow-md ring-1 ring-sand/80 backdrop-blur-sm"
+              className="wish-float absolute bottom-0 left-0 max-w-full rounded-2xl rounded-bl-sm bg-paper/60 px-3 py-1.5 shadow-md ring-1 ring-sand/70 backdrop-blur-sm min-[1100px]:right-0 min-[1100px]:left-auto min-[1100px]:rounded-bl-2xl min-[1100px]:rounded-br-sm min-[1100px]:bg-paper/85 min-[1100px]:px-3.5 min-[1100px]:py-2"
             >
-              <p className="flex items-baseline gap-1.5 text-xs">
+              <p className="flex items-baseline justify-between gap-2 text-xs">
                 <span className="truncate font-bold text-cocoa">⭐ {b.wish.name}</span>
-                <span className="shrink-0 text-[11px] text-ink/45">· {timeAgo(b.wish.time)}</span>
+                <span className="shrink-0 text-[11px] font-semibold text-caramel">{timeAgo(b.wish.time)}</span>
               </p>
               <p className="line-clamp-2 text-[13px] leading-snug text-ink/80">{b.wish.message}</p>
             </div>
@@ -75,11 +82,14 @@ export default function FloatingWishes() {
           setBubbles([]);
         }}
         aria-label={on ? "Tắt lời chúc bay" : "Bật lời chúc bay"}
-        className={`fixed bottom-4 left-[max(1rem,calc(50%-13rem))] z-40 grid size-12 place-items-center rounded-full shadow-lg ring-4 ring-paper/70 transition-colors ${
+        className={`fixed bottom-4 left-4 z-40 grid size-12 place-items-center rounded-full shadow-lg ring-4 ring-paper/70 transition-colors min-[1100px]:left-[calc(50%-14rem-4.5rem)] ${
           on ? "bg-cocoa text-paper" : "bg-paper text-cocoa/60"
         }`}
       >
-        <span className="text-xl">💬</span>
+        <svg viewBox="0 0 24 24" className="block size-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+          <path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z" />
+          <path d="M8.5 12h.01M12 12h.01M15.5 12h.01" strokeWidth="2.6" />
+        </svg>
       </button>
     </>
   );

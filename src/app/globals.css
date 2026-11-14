@@ -86,7 +86,13 @@ body {
   0% { opacity: 0; transform: translateY(24px) scale(0.92); }
   8% { opacity: 1; transform: translateY(0) scale(1); }
   75% { opacity: 0.95; }
-  100% { opacity: 0; transform: translateY(-240px); }
+  100% { opacity: 0; transform: translateY(var(--rise, -240px)); }
+}
+
+/* Độ cao bay: điện thoại chỉ bay thấp ở đáy để đỡ che nội dung; PC bay dọc cạnh khung thiệp */
+.wish-lane { --rise: -150px; }
+@media (min-width: 1100px) {
+  .wish-lane { --rise: -48vh; }
 }
 
 .wish-float {
