@@ -87,7 +87,7 @@ export default function Invitation() {
         {/* ---------- Lời mời ---------- */}
         <Reveal as="section" className="text-center">
           <SectionTitle kicker={INVITE.greeting} title={guest || "Bạn đến chung vui"} />
-          {guest && <p className="-mt-3 mb-5 text-sm tracking-wide text-ink/60">đến chung vui cùng gia đình</p>}
+          {guest && <p className="-mt-3 mb-5 text-sm tracking-wide text-ink/60">đến dự bữa tiệc nho nhỏ</p>}
           <p className="leading-relaxed text-ink/80">{INVITE.message}</p>
         </Reveal>
 
