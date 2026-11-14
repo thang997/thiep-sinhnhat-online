@@ -49,7 +49,7 @@ export default function TaoLink() {
         <p className="text-center font-script text-2xl text-caramel">Dành cho bố mẹ bé {BABY.nickname}</p>
         <h1 className="text-center font-display text-3xl font-bold text-cocoa">Tạo link mời riêng</h1>
         <p className="mt-3 text-center text-sm text-ink/60">
-          Mỗi dòng một khách. Mỗi người nhận một link riêng, mở ra thiệp ghi “Trân trọng kính mời …” kèm tên họ.
+          Mỗi dòng một khách. Mỗi người nhận một link riêng, mở ra thiệp ghi “Trân trọng kính mời …” kèm tên họ. Muốn tên xuống dòng ở đâu thì gõ dấu “/” ở đó, vd “Đại Gia đình yêu dấu/của con”.
         </p>
 
         <textarea

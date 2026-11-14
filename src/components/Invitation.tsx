@@ -3,7 +3,7 @@
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { BABY, HERO_PHOTO, INVITE, PARTY, PHOTOS } from "@/lib/content";
-import { useGuestName } from "@/lib/guest";
+import { guestLines, plainName, useGuestRaw } from "@/lib/guest";
 import { calendarUrl, formatParty, mapEmbedUrl, mapsUrl } from "@/lib/party";
 import Album from "./Album";
 import BlowCandle from "./BlowCandle";
@@ -19,7 +19,7 @@ import Wishes from "./Wishes";
 // Three.js chỉ chạy phía client — tải sau để màn nội dung hiện ngay.
 const Balloons = dynamic(() => import("./three/Balloons"), { ssr: false });
 
-function SectionTitle({ kicker, title }: { kicker: string; title: string }) {
+function SectionTitle({ kicker, title }: { kicker: string; title: React.ReactNode }) {
   return (
     <div className="mb-6 text-center">
       <p className="font-script text-2xl text-caramel">{kicker}</p>
@@ -41,7 +41,8 @@ function Divider() {
 
 export default function Invitation() {
   const d = formatParty();
-  const guest = useGuestName();
+  const guestRaw = useGuestRaw();
+  const guest = plainName(guestRaw);
 
   return (
     <main className="screen-enter paper-dots min-h-dvh">
@@ -86,7 +87,15 @@ export default function Invitation() {
           <div className="flex flex-col gap-14 px-5 py-12">
         {/* ---------- Lời mời ---------- */}
         <Reveal as="section" className="text-center">
-          <SectionTitle kicker={INVITE.greeting} title={guest || "Bạn đến chung vui"} />
+          <SectionTitle kicker={INVITE.greeting} title={
+              guest
+                ? guestLines(guestRaw).map((l, i) => (
+                    <span key={i} className="block">
+                      {l}
+                    </span>
+                  ))
+                : "Bạn đến chung vui"
+            } />
           {guest && <p className="-mt-3 mb-5 text-sm tracking-wide text-ink/60">đến dự bữa tiệc nho nhỏ</p>}
           <p className="leading-relaxed text-ink/80">{INVITE.message}</p>
         </Reveal>
