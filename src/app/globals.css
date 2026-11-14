@@ -47,6 +47,31 @@ button:disabled {
   cursor: not-allowed;
 }
 
+/* Hiệu ứng nút: rê chuột → nhô lên, sáng hơn, đổ bóng; bấm → lún nhẹ.
+   Dùng drop-shadow (filter) thay box-shadow để không đè viền ring-* của Tailwind.
+   Chỉ bật hover trên thiết bị có chuột — điện thoại không bị "kẹt" trạng thái hover. */
+.btn {
+  transition:
+    transform 0.2s ease,
+    filter 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease,
+    opacity 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+@media (hover: hover) {
+  .btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    filter: brightness(1.08) drop-shadow(0 8px 12px rgb(107 79 58 / 0.3));
+  }
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(0) scale(0.96);
+  filter: brightness(0.97);
+}
+
 /* Nền giấy có chấm bi mờ */
 .paper-dots {
   background-color: var(--cream);

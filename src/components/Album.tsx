@@ -103,7 +103,7 @@ export default function Album({ photos }: { photos: Photo[] }) {
             type="button"
             aria-label="Ảnh trước"
             onClick={() => go(-1)}
-            className="absolute top-1/2 left-2 grid size-9 -translate-y-1/2 place-items-center rounded-full bg-paper/70 text-xl text-cocoa shadow"
+            className="btn absolute top-1/2 left-2 grid size-9 -translate-y-1/2 place-items-center rounded-full bg-paper/70 text-xl text-cocoa shadow"
           >
             ‹
           </button>
@@ -111,7 +111,7 @@ export default function Album({ photos }: { photos: Photo[] }) {
             type="button"
             aria-label="Ảnh sau"
             onClick={() => go(1)}
-            className="absolute top-1/2 right-2 grid size-9 -translate-y-1/2 place-items-center rounded-full bg-paper/70 text-xl text-cocoa shadow"
+            className="btn absolute top-1/2 right-2 grid size-9 -translate-y-1/2 place-items-center rounded-full bg-paper/70 text-xl text-cocoa shadow"
           >
             ›
           </button>
@@ -124,7 +124,7 @@ export default function Album({ photos }: { photos: Photo[] }) {
               type="button"
               aria-label={`Ảnh ${i + 1}`}
               onClick={() => setSlide(i)}
-              className={`h-2 rounded-full transition-all duration-500 ${i === slide ? "w-6 bg-cocoa" : "w-2 bg-caramel/40"}`}
+              className={`h-2 rounded-full transition-all duration-500 ${i === slide ? "w-6 bg-cocoa" : "w-2 bg-caramel/40 hover:bg-caramel"}`}
             />
           ))}
         </div>
@@ -155,14 +155,14 @@ export default function Album({ photos }: { photos: Photo[] }) {
             className="screen-enter max-h-[85vh] w-auto rounded-xl object-contain"
             onClick={(e) => e.stopPropagation()}
           />
-          <button type="button" aria-label="Đóng" onClick={close} className="absolute top-4 right-4 size-10 rounded-full bg-paper/15 text-2xl text-paper">
+          <button type="button" aria-label="Đóng" onClick={close} className="btn absolute top-4 right-4 size-10 rounded-full bg-paper/15 text-2xl text-paper">
             ×
           </button>
           <button
             type="button"
             aria-label="Ảnh trước"
             onClick={(e) => (e.stopPropagation(), step(-1))}
-            className="absolute left-2 size-10 rounded-full bg-paper/15 text-2xl text-paper"
+            className="btn absolute left-2 size-10 rounded-full bg-paper/15 text-2xl text-paper"
           >
             ‹
           </button>
@@ -170,7 +170,7 @@ export default function Album({ photos }: { photos: Photo[] }) {
             type="button"
             aria-label="Ảnh sau"
             onClick={(e) => (e.stopPropagation(), step(1))}
-            className="absolute right-2 size-10 rounded-full bg-paper/15 text-2xl text-paper"
+            className="btn absolute right-2 size-10 rounded-full bg-paper/15 text-2xl text-paper"
           >
             ›
           </button>

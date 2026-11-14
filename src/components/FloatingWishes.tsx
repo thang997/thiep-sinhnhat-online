@@ -82,7 +82,7 @@ export default function FloatingWishes() {
           setBubbles([]);
         }}
         aria-label={on ? "Tắt lời chúc bay" : "Bật lời chúc bay"}
-        className={`fixed bottom-4 left-4 z-40 grid size-12 place-items-center rounded-full shadow-lg ring-4 ring-paper/70 transition-colors min-[1100px]:left-[calc(50%-14rem-4.5rem)] ${
+        className={`btn fixed bottom-4 left-4 z-40 grid size-12 place-items-center rounded-full shadow-lg ring-4 ring-paper/70 transition-colors min-[1100px]:left-[calc(50%-14rem-4.5rem)] ${
           on ? "bg-cocoa text-paper" : "bg-paper text-cocoa/60"
         }`}
       >

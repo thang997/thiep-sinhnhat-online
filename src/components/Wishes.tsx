@@ -68,7 +68,7 @@ export default function Wishes() {
         <button
           type="submit"
           disabled={status === "sending"}
-          className="rounded-full bg-cocoa py-3 font-semibold text-paper shadow-md transition-opacity disabled:opacity-60"
+          className="btn rounded-full bg-cocoa py-3 font-semibold text-paper shadow-md transition-opacity disabled:opacity-60"
         >
           {status === "sending" ? "Đang gửi..." : "Gửi lời chúc 💌"}
         </button>

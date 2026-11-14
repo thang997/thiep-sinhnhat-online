@@ -105,7 +105,7 @@ export default function Invitation() {
             href={calendarUrl()}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-6 inline-flex items-center gap-2 rounded-full border border-cocoa/30 px-5 py-2.5 text-sm font-semibold text-cocoa"
+            className="btn mt-6 inline-flex items-center gap-2 rounded-full border border-cocoa/30 px-5 py-2.5 text-sm font-semibold text-cocoa hover:bg-cocoa hover:text-paper"
           >
             🗓️ Thêm vào lịch
           </a>
@@ -121,7 +121,7 @@ export default function Invitation() {
             href={mapsUrl()}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-5 inline-flex items-center gap-2 rounded-full bg-cocoa px-6 py-3 font-semibold text-paper shadow-md"
+            className="btn mt-5 inline-flex items-center gap-2 rounded-full bg-cocoa px-6 py-3 font-semibold text-paper shadow-md"
           >
             Chỉ đường
           </a>

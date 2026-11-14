@@ -46,8 +46,8 @@ export default function Rsvp() {
       type="button"
       onClick={() => setAttending(value)}
       aria-pressed={attending === value}
-      className={`rounded-2xl px-3 py-3 text-sm font-semibold ring-1 transition-colors ${
-        attending === value ? "bg-cocoa text-paper ring-cocoa" : "bg-cream text-cocoa ring-sand"
+      className={`btn rounded-2xl px-3 py-3 text-sm font-semibold ring-1 transition-colors ${
+        attending === value ? "bg-cocoa text-paper ring-cocoa" : "bg-cream text-cocoa ring-sand hover:ring-caramel"
       }`}
     >
       {label}
@@ -76,7 +76,7 @@ export default function Rsvp() {
               type="button"
               aria-label="Bớt"
               onClick={() => setGuests((g) => Math.max(1, g - 1))}
-              className="size-8 rounded-full bg-paper text-lg text-cocoa ring-1 ring-sand"
+              className="btn size-8 rounded-full bg-paper text-lg text-cocoa ring-1 ring-sand"
             >
               −
             </button>
@@ -85,7 +85,7 @@ export default function Rsvp() {
               type="button"
               aria-label="Thêm"
               onClick={() => setGuests((g) => Math.min(LIMITS.guests, g + 1))}
-              className="size-8 rounded-full bg-paper text-lg text-cocoa ring-1 ring-sand"
+              className="btn size-8 rounded-full bg-paper text-lg text-cocoa ring-1 ring-sand"
             >
               +
             </button>
@@ -111,7 +111,7 @@ export default function Rsvp() {
       <button
         type="submit"
         disabled={status === "sending" || attending === null}
-        className="rounded-full bg-cocoa py-3 font-semibold text-paper shadow-md transition-opacity disabled:opacity-50"
+        className="btn rounded-full bg-cocoa py-3 font-semibold text-paper shadow-md transition-opacity disabled:opacity-50"
       >
         {status === "sending" ? "Đang gửi..." : "Gửi xác nhận"}
       </button>
