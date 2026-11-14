@@ -56,8 +56,6 @@ export const PHOTOS: Photo[] = [
   portrait("03", "Bé ngồi bên bóng bay"),
   portrait("07", "Bé ôm gấu"),
   landscape("13", "Bé đọc sách trên sofa"),
-  portrait("09", "Bé trên ghế cao"),
-  portrait("10", "Bé ngồi ghế cao nhìn quanh"),
   landscape("15", "Bé bò trên sàn"),
   portrait("06", "Bé vẫy tay chào"),
   portrait("14", "Bé đọc sách"),
