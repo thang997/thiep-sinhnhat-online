@@ -5,7 +5,7 @@
 
 export const BABY = {
   /** Tên ở nhà — hiện to ở tiêu đề. */
-  nickname: "Tom",
+  nickname: "Tôm",
   /** Tên thật — hiện nhỏ bên dưới (để "" nếu không muốn hiện). */
   fullName: "Đăng Dương",
 };
@@ -30,7 +30,7 @@ export const INVITE = {
   greeting: "Trân trọng kính mời",
   message:
     "Một năm trôi qua thật nhanh, con đã lớn lên trong tình yêu thương của cả nhà. Bố mẹ rất mong được đón tiếp mọi người đến chung vui ngày con tròn 1 tuổi.",
-  signature: "Bố mẹ bé Tom", // TODO
+  signature: "Bố mẹ bé Tôm", // TODO
 };
 
 export type Photo = { src: string; alt: string; w: number; h: number };
