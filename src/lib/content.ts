@@ -16,9 +16,11 @@ export const PARTY = {
   /** Giờ kết thúc chỉ dùng cho lịch (Google Calendar), không hiện trên thiệp. */
   end: "2026-11-22T13:30",
   /** Ngày âm lịch — để "" nếu không muốn hiện. */
-  lunar: "", // TODO: vd "Nhằm ngày 17 tháng 10 năm Bính Ngọ"
+  lunar: "Nhằm ngày 14 tháng 10 năm Bính Ngọ",
   venueName: "Nhà hàng Phú Cường",
-  address: "340 Bà Triệu", // TODO: thêm quận/thành phố để Google Maps tìm chính xác
+  address: "340 Bà Triệu, Hai Bà Trưng, Hà Nội",
+  /** Gần ngã tư Bà Triệu — Đại Cồ Việt. Hiện nhỏ dưới địa chỉ (để "" nếu không cần). */
+  landmark: "Gần đường Đại Cồ Việt",
   /** Link Google Maps chính xác (nếu có). Để "" thì tự tìm theo địa chỉ. */
   mapsUrl: "",
 };

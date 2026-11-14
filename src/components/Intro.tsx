@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { BABY, INTRO_PHOTO, INVITE } from "@/lib/content";
+import { useGuestName } from "@/lib/guest";
 
 type Props = {
   /** Gọi ngay lúc chạm — dùng để phát nhạc (trình duyệt chỉ cho phát trong lần chạm này). */
@@ -17,6 +18,7 @@ const EXIT_MS = 700;
 export default function Intro({ onTap, onDone }: Props) {
   const [open, setOpen] = useState(false);
   const [exiting, setExiting] = useState(false);
+  const guest = useGuestName();
 
   const handleOpen = () => {
     if (open) return;
@@ -34,6 +36,11 @@ export default function Intro({ onTap, onDone }: Props) {
         <p className="font-script text-4xl text-caramel">{INVITE.title}</p>
         <h1 className="font-display text-6xl font-bold leading-tight text-cocoa">bé {BABY.nickname}</h1>
         <p className="mt-1 text-sm uppercase tracking-[0.3em] text-ink/60">tròn 1 tuổi</p>
+        {guest && (
+          <p className="mt-5 text-ink/70">
+            Kính gửi <span className="font-display text-xl font-bold text-cocoa">{guest}</span>
+          </p>
+        )}
       </header>
 
       <button

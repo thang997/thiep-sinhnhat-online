@@ -20,6 +20,12 @@ link Google Maps, lời mời, chữ ký, danh sách ảnh.
 - **Nhạc:** chép file mp3 vào `public/music/nang-ngoai-san.mp3`. Thiếu file thì thiệp vẫn chạy, chỉ không có nhạc
   và không hiện nút đĩa nhạc.
 
+## Link mời riêng cho từng khách
+
+Mở `/tao-link` (vd `https://thiep-sinhnhat-online.vercel.app/tao-link`), nhập mỗi dòng một tên → mỗi người một link
+dạng `/?k=Cô%20Lan`. Thiệp sẽ hiện "Kính gửi Cô Lan" ở màn mở phong bì, "Trân trọng kính mời Cô Lan" trong thiệp,
+và điền sẵn tên vào form lời chúc / xác nhận. Nút "Chép" chép luôn câu mời kèm link để dán vào Zalo.
+
 ## Lời chúc & xác nhận tham dự (Google Sheet)
 
 Không dùng DB — dữ liệu ghi vào Google Sheet của bạn qua Apps Script.

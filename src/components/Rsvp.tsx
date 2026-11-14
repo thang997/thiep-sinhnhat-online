@@ -1,11 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useGuestName } from "@/lib/guest";
 import { LIMITS, sendRsvp } from "@/lib/guestbook";
 
 /** Form xác nhận tham dự. Kết quả chỉ lưu vào Google Sheet của chủ tiệc, không hiện công khai. */
 export default function Rsvp() {
   const [name, setName] = useState("");
+  // Mở từ link riêng (?k=tên) → điền sẵn tên khách
+  const guest = useGuestName();
+  useEffect(() => {
+    if (guest) setName((n) => n || guest);
+  }, [guest]);
   const [attending, setAttending] = useState<boolean | null>(null);
   const [guests, setGuests] = useState(1);
   const [note, setNote] = useState("");

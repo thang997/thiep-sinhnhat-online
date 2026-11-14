@@ -3,13 +3,17 @@
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { BABY, HERO_PHOTO, INVITE, PARTY, PHOTOS } from "@/lib/content";
-import { calendarUrl, formatParty, mapsUrl } from "@/lib/party";
+import { useGuestName } from "@/lib/guest";
+import { calendarUrl, formatParty, mapEmbedUrl, mapsUrl } from "@/lib/party";
 import Album from "./Album";
+import BlowCandle from "./BlowCandle";
 import Countdown from "./Countdown";
+import Decor from "./Decor";
 import FloatingWishes from "./FloatingWishes";
 import MonthCalendar from "./MonthCalendar";
 import Reveal from "./Reveal";
 import Rsvp from "./Rsvp";
+import Share from "./Share";
 import Wishes from "./Wishes";
 
 // Three.js chỉ chạy phía client — tải sau để màn nội dung hiện ngay.
@@ -37,9 +41,11 @@ function Divider() {
 
 export default function Invitation() {
   const d = formatParty();
+  const guest = useGuestName();
 
   return (
     <main className="screen-enter paper-dots min-h-dvh">
+      <Decor />
       <FloatingWishes />
       {/* ---------- Hero ---------- */}
       <section className="relative flex min-h-dvh flex-col items-center justify-center overflow-hidden px-6 pt-10 pb-16 text-center">
@@ -75,12 +81,13 @@ export default function Invitation() {
       </section>
 
       {/* Khung "tờ thiệp": toàn bộ nội dung từ lời mời trở xuống nằm trong một tấm giấy viền đôi */}
-      <div className="px-3 pb-24">
+      <div className="relative px-3 pb-24">
         <div className="frame mx-auto max-w-md">
           <div className="flex flex-col gap-14 px-5 py-12">
         {/* ---------- Lời mời ---------- */}
         <Reveal as="section" className="text-center">
-          <SectionTitle kicker={INVITE.greeting} title="Bạn đến chung vui" />
+          <SectionTitle kicker={INVITE.greeting} title={guest || "Bạn đến chung vui"} />
+          {guest && <p className="-mt-3 mb-5 text-sm tracking-wide text-ink/60">đến chung vui cùng gia đình</p>}
           <p className="leading-relaxed text-ink/80">{INVITE.message}</p>
         </Reveal>
 
@@ -117,6 +124,16 @@ export default function Invitation() {
         <Reveal as="section" className="text-center">
           <SectionTitle kicker="Địa điểm" title={PARTY.venueName} />
           <p className="text-ink/80">📍 {PARTY.address}</p>
+          {PARTY.landmark && <p className="mt-1 text-sm text-ink/55">({PARTY.landmark})</p>}
+          <div className="mt-5 overflow-hidden rounded-3xl bg-sand shadow-sm ring-4 ring-paper">
+            <iframe
+              src={mapEmbedUrl()}
+              title={`Bản đồ ${PARTY.venueName}`}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="block h-60 w-full border-0"
+            />
+          </div>
           <a
             href={mapsUrl()}
             target="_blank"
@@ -155,10 +172,21 @@ export default function Invitation() {
 
         <Divider />
 
+        {/* ---------- Thổi nến ---------- */}
+        <Reveal as="section">
+          <SectionTitle kicker="Ước một điều ước" title="Thổi nến cùng bé" />
+          <BlowCandle />
+        </Reveal>
+
+        <Divider />
+
         {/* ---------- Lời kết ---------- */}
         <Reveal as="section" className="text-center">
           <p className="font-display text-2xl font-semibold text-cocoa">Rất hân hạnh được đón tiếp!</p>
           <p className="mt-4 font-script text-3xl text-caramel">{INVITE.signature}</p>
+          <div className="mt-8">
+            <Share />
+          </div>
         </Reveal>
           </div>
         </div>

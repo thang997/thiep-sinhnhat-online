@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useGuestName } from "@/lib/guest";
 import { BABY } from "@/lib/content";
 import { LIMITS, sendWish } from "@/lib/guestbook";
 import { addWish } from "@/lib/useWishes";
@@ -8,6 +9,11 @@ import { addWish } from "@/lib/useWishes";
 /** Form gửi lời chúc. Lời chúc hiển thị dạng bong bóng bay (FloatingWishes); gửi xong bay ra ngay. */
 export default function Wishes() {
   const [name, setName] = useState("");
+  // Mở từ link riêng (?k=tên) → điền sẵn tên khách
+  const guest = useGuestName();
+  useEffect(() => {
+    if (guest) setName((n) => n || guest);
+  }, [guest]);
   const [message, setMessage] = useState("");
   const [website, setWebsite] = useState(""); // bẫy bot
   const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">("idle");

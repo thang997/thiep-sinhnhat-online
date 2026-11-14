@@ -35,6 +35,11 @@ export function mapsUrl() {
   );
 }
 
+/** Bản đồ nhúng (iframe) — dạng output=embed không cần API key. */
+export function mapEmbedUrl() {
+  return `https://maps.google.com/maps?q=${encodeURIComponent(`${PARTY.venueName}, ${PARTY.address}`)}&z=16&output=embed`;
+}
+
 /** Link "Thêm vào Google Calendar" — giờ địa phương kèm ctz nên đúng với mọi máy. */
 export function calendarUrl() {
   const fmt = (x: string) => {

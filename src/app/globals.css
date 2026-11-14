@@ -136,6 +136,26 @@ button:disabled {
   animation: wish-float 8s cubic-bezier(0.25, 0.6, 0.4, 1) forwards;
 }
 
+/* ---------- Trang trí nền (Decor) ---------- */
+@keyframes decor-drift {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(40px, -12px, 0); }
+}
+
+@keyframes decor-twinkle {
+  0%, 100% { opacity: 0.35; transform: scale(0.85) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1.1) rotate(20deg); }
+}
+
+.decor-drift {
+  opacity: 0.8;
+  animation: decor-drift 40s ease-in-out infinite;
+}
+
+.decor-twinkle {
+  animation: decor-twinkle 4s ease-in-out infinite;
+}
+
 /* ---------- Phong bì (màn mở đầu) ---------- */
 .envelope {
   position: relative;
@@ -274,6 +294,8 @@ button:disabled {
   html { scroll-behavior: auto; }
 
   .nudge,
+  .decor-drift,
+  .decor-twinkle,
   .spin-slow,
   .scroll-hint,
   .screen-enter {
