@@ -33,7 +33,7 @@ export default function Intro({ onTap, onDone }: Props) {
       className={`paper-dots fixed inset-0 flex flex-col items-center justify-center gap-10 px-6 ${exiting ? "screen-exit" : ""}`}
     >
       <header className="text-center">
-        <p className="font-script text-4xl text-caramel">{INVITE.title}</p>
+        <p className="font-script text-4xl text-caramel">Thiệp mời sinh nhật</p>
         <h1 className="font-display text-6xl font-bold leading-tight text-cocoa">bé {BABY.nickname}</h1>
         <p className="mt-1 text-sm uppercase tracking-[0.3em] text-ink/60">tròn 1 tuổi</p>
         {guest && (
