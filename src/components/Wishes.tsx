@@ -29,6 +29,7 @@ export default function Wishes() {
     try {
       await sendWish({ name: n, message: m, website });
       addWish({ name: n, message: m, time: new Date().toISOString() });
+      setName("");
       setMessage("");
       setStatus("done");
     } catch (err) {
@@ -43,6 +44,7 @@ export default function Wishes() {
         <input
           className="field"
           placeholder="Tên của bạn"
+          autoComplete="off"
           value={name}
           maxLength={LIMITS.name}
           onChange={(e) => setName(e.target.value)}
