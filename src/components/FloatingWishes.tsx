@@ -5,9 +5,13 @@ import { timeAgo, type Wish } from "@/lib/guestbook";
 import { useWishes } from "@/lib/useWishes";
 
 const EVERY_MS = 3000; // bao lâu bay ra một lời chúc
-const LIFE_MS = 8000; // mỗi bong bóng sống bao lâu (khớp animation .wish-float)
+const LIFE_MS = 8000; // bong bóng ngắn sống bao lâu (khớp animation .wish-float)
 
-type Bubble = { id: number; wish: Wish };
+/** Lời chúc dài hiện đầy đủ nên cần lâu hơn để đọc, và lời chúc sau phải chờ lâu hơn kẻo đè lên. */
+const lifeOf = (w: Wish) => Math.min(LIFE_MS + Math.max(0, w.message.length - 60) * 45, 20000);
+const gapAfter = (w: Wish) => EVERY_MS + Math.min(Math.max(0, w.message.length - 60) * 20, 6000);
+
+type Bubble = { id: number; wish: Wish; life: number };
 
 /**
  * Lời chúc bay lên sát mép trái khung thiệp, luôn ở gần đáy màn hình, mờ dần — kiểu bình luận livestream.
@@ -28,8 +32,9 @@ export default function FloatingWishes() {
 
   const push = (wish: Wish) => {
     const id = nextId.current++;
-    setBubbles((b) => [...b, { id, wish }]);
-    setTimeout(() => setBubbles((b) => b.filter((x) => x.id !== id)), LIFE_MS);
+    const life = lifeOf(wish);
+    setBubbles((b) => [...b, { id, wish, life }]);
+    setTimeout(() => setBubbles((b) => b.filter((x) => x.id !== id)), life);
   };
 
   // Vòng lặp: cứ EVERY_MS lại thả lời chúc kế tiếp
@@ -40,13 +45,15 @@ export default function FloatingWishes() {
       shownLatest.current = latest;
       cursor.current = 0;
     }
+    let timer: ReturnType<typeof setTimeout>;
     const tick = () => {
-      push(wishes[cursor.current % wishes.length]);
+      const w = wishes[cursor.current % wishes.length];
+      push(w);
       cursor.current++;
+      timer = setTimeout(tick, gapAfter(w));
     };
     tick();
-    const id = setInterval(tick, EVERY_MS);
-    return () => clearInterval(id);
+    return () => clearTimeout(timer);
   }, [on, reduced, wishes, latest]);
 
   if (reduced || wishes.length === 0) return null;
@@ -65,13 +72,14 @@ export default function FloatingWishes() {
           bubbles.map((b) => (
             <div
               key={b.id}
+              style={{ animationDuration: `${b.life}ms` }}
               className="wish-float absolute bottom-0 left-0 max-w-full rounded-2xl rounded-bl-sm bg-paper/60 px-3 py-1.5 shadow-md ring-1 ring-sand/70 backdrop-blur-sm min-[1100px]:right-0 min-[1100px]:left-auto min-[1100px]:rounded-bl-2xl min-[1100px]:rounded-br-sm min-[1100px]:bg-paper/85 min-[1100px]:px-3.5 min-[1100px]:py-2"
             >
               <p className="flex items-baseline justify-between gap-2 text-xs">
-                <span className="truncate font-bold text-cocoa">⭐ {b.wish.name}</span>
+                <span className="min-w-0 break-words font-bold text-cocoa">⭐ {b.wish.name}</span>
                 <span className="shrink-0 text-[11px] font-semibold text-caramel">{timeAgo(b.wish.time)}</span>
               </p>
-              <p className="line-clamp-2 text-[13px] leading-snug text-ink/80">{b.wish.message}</p>
+              <p className="whitespace-pre-line break-words text-[13px] leading-snug text-ink/80">{b.wish.message}</p>
             </div>
           ))}
       </div>
